@@ -1,0 +1,19 @@
+.todo-item {
+  font-size: 18px;
+  color: #000;
+  margin: 10px;
+  display: flex;
+  max-width: 300px;
+  align-items: center;
+}
+.todo-item.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.todo-item-delete {
+  background: #fff;
+  border: 1px solid #444;
+  margin-left: 10px;
+  cursor: pointer;
+}
