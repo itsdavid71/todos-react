@@ -1,9 +1,14 @@
 import PropTypes from "prop-types";
-import "./TodoItem.css";
+import styles from "./TodoItem.module.css";
+import classNames from "classnames";
 
 function TodoItem({ item, onComplete, onDelete }) {
+  const itemClass = classNames(styles.item, {
+    [styles.completed]: item.completed,
+    [styles.deleted]: item.deleted,
+  });
   return (
-    <div className={item.completed ? "todo-item completed" : "todo-item"}>
+    <div className={itemClass}>
       <input type="checkbox" checked={item.completed} onChange={onComplete} />
       {item.title}
       <button className="todo-item-delete" onClick={onDelete}>

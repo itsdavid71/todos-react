@@ -7,7 +7,7 @@ import User from "./routes/User";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <nav>
         <Link to="/">Главная</Link>
         <Link to="/about">О нас</Link>

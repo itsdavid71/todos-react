@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import styles from "./User.module.css";
 
 function User() {
   const [input, setInput] = useState("");
@@ -12,7 +13,7 @@ function User() {
   };
 
   return (
-    <div>
+    <div className={styles.field}>
       <h1>Пользователь {userId}</h1>
       <form onSubmit={handleSubmit}>
         <p>Введи новый ID пользователя:</p>

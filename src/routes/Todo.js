@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Todo.css";
+import styles from "./Todo.module.css";
 import AddItemForm from "../components/AddItemForm";
 import TodoItem from "../components/TodoItem";
 
@@ -10,6 +10,7 @@ const defatulItems = [
 
 function Todo() {
   const [items, setItems] = useState(defatulItems);
+  console.log(styles);
 
   const handleSubmit = (title, date) => {
     const newItem = {
@@ -40,7 +41,7 @@ function Todo() {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <AddItemForm onSubmit={handleSubmit} />
       {items.map((item) => (
         <TodoItem

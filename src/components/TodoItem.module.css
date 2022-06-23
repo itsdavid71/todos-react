@@ -1,4 +1,4 @@
-.todo-item {
+.item {
   font-size: 18px;
   color: #000;
   margin: 10px;
@@ -6,7 +6,7 @@
   max-width: 300px;
   align-items: center;
 }
-.todo-item.completed {
+.completed {
   text-decoration: line-through;
   color: grey;
 }
