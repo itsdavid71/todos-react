@@ -1,55 +1,25 @@
-import { useState } from "react";
 import "./App.css";
-import AddItemForm from "./components/AddItemForm";
-import TodoItem from "./components/TodoItem";
-
-const defatulItems = [
-  { id: 0, title: "Buy Bread", date: "2022-21-06", completed: false },
-  { id: 1, title: "Buy Bread", date: "2022-21-06", completed: true },
-];
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./routes/Home";
+import About from "./routes/About";
+import Todo from "./routes/Todo";
+import User from "./routes/User";
 
 function App() {
-  const [items, setItems] = useState(defatulItems);
-
-  const handleSubmit = (title, date) => {
-    const newItem = {
-      id: items.length,
-      title,
-      date,
-      completed: false,
-    };
-    setItems([...items, newItem]);
-  };
-
-  const handleItemComplete = (clickedItem) => {
-    const newItems = items.map((item) => {
-      if (item.id === clickedItem.id) {
-        return {
-          ...item,
-          completed: !item.completed,
-        };
-      }
-      return item;
-    });
-    setItems(newItems);
-  };
-
-  const handleItemDelete = (clickedItem) => {
-    const newItems = items.filter((item) => item.id !== clickedItem.id);
-    setItems(newItems);
-  };
-
   return (
     <div>
-      <AddItemForm onSubmit={handleSubmit} />
-      {items.map((item) => (
-        <TodoItem
-          key={item.id}
-          item={item}
-          onComplete={() => handleItemComplete(item)}
-          onDelete={() => handleItemDelete(item)}
-        />
-      ))}
+      <nav>
+        <Link to="/">Главная</Link>
+        <Link to="/about">О нас</Link>
+        <Link to="/todo">Todo</Link>
+        <Link to="/user">User</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="todo" element={<Todo />} />
+        <Route path="user/:userId" element={<User />} />
+      </Routes>
     </div>
   );
 }
