@@ -3,5 +3,17 @@
 }
 
 .field {
-  background: red;
+  background: #f4f1f1;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 900;
+  text-decoration: underline;
 }
