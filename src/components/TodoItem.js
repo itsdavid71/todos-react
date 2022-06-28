@@ -10,7 +10,8 @@ function TodoItem({ item, onComplete, onDelete }) {
   return (
     <div className={itemClass}>
       <input type="checkbox" checked={item.completed} onChange={onComplete} />
-      {item.title}
+      {item.title} <br />
+      {item.date}
       <button className="todo-item-delete" onClick={onDelete}>
         X
       </button>

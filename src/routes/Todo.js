@@ -1,16 +1,13 @@
-import { useState } from "react";
 import styles from "./Todo.module.css";
 import AddItemForm from "../components/AddItemForm";
 import TodoItem from "../components/TodoItem";
+import { useSelector, useDispatch } from "react-redux";
 
-const defatulItems = [
-  { id: 0, title: "Buy Bread", date: "2022-21-06", completed: false },
-  { id: 1, title: "Buy Bread", date: "2022-21-06", completed: true },
-];
+import { addItem, deleteItem, completeItem } from "../features/todo/todoSlice";
 
 function Todo() {
-  const [items, setItems] = useState(defatulItems);
-  console.log(styles);
+  const items = useSelector((state) => state.todo);
+  const dispatch = useDispatch();
 
   const handleSubmit = (title, date) => {
     const newItem = {
@@ -19,25 +16,15 @@ function Todo() {
       date,
       completed: false,
     };
-    setItems([...items, newItem]);
+    dispatch(addItem(newItem));
   };
 
-  const handleItemComplete = (clickedItem) => {
-    const newItems = items.map((item) => {
-      if (item.id === clickedItem.id) {
-        return {
-          ...item,
-          completed: !item.completed,
-        };
-      }
-      return item;
-    });
-    setItems(newItems);
+  const handleItemComplete = (item) => {
+    dispatch(completeItem(item));
   };
 
-  const handleItemDelete = (clickedItem) => {
-    const newItems = items.filter((item) => item.id !== clickedItem.id);
-    setItems(newItems);
+  const handleItemDelete = (item) => {
+    dispatch(deleteItem(item));
   };
 
   return (
